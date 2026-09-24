@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Level 2 business website demo — premium local restaurant">
+<title>EMBER & BEAN — Premium Restaurant Demo</title>
+<style>
+:root{--bg:#10100f;--card:#181816;--cream:#f5f0e7;--muted:#aaa69d;--gold:#d8a64b;--line:#2b2a27}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--cream);line-height:1.6}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;z-index:20;top:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 6%;background:#10100fe8;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff0d}
+.logo{font-family:Georgia,serif;font-size:22px;font-weight:bold}.logo b{color:var(--gold)}
+.navlinks{display:flex;gap:28px;font-size:14px;color:#ddd}
+.navlinks a:hover{color:var(--gold)}
+.navbtn{padding:11px 18px;border:1px solid var(--gold);border-radius:30px;color:var(--gold);font-weight:bold;font-size:13px}
+.hero{min-height:100vh;padding:145px 7% 80px;display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;background:radial-gradient(circle at 80% 25%,#3c2a13 0,#10100f 35%)}
+.eyebrow{color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:bold}
+h1{font:700 clamp(48px,7vw,82px)/.98 Georgia,serif;margin:18px 0 24px}
+h1 span{color:var(--gold);font-style:italic}
+.hero p{max-width:570px;color:#c2beb6;font-size:17px;margin-bottom:30px}
+.btn{display:inline-block;padding:14px 23px;border-radius:5px;font-weight:bold;font-size:14px;margin-right:10px}
+.gold{background:var(--gold);color:#17130b}.outline{border:1px solid #777;color:white}
+.heroimg{min-height:540px;border-radius:16px;background:linear-gradient(#0002,#0008),url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85") center/cover;box-shadow:0 25px 70px #0008}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 7%;text-align:center}
+.stat strong{display:block;font:700 28px Georgia,serif;color:var(--gold)}.stat span{font-size:12px;color:var(--muted)}
+section{padding:90px 7%}.heading{text-align:center;max-width:650px;margin:0 auto 45px}.heading small{color:var(--gold);letter-spacing:2px;text-transform:uppercase}.heading h2{font:700 42px Georgia,serif;margin:9px 0}.heading p{color:var(--muted)}
+.menu{background:#f5f0e7;color:#171614}.menu .heading p{color:#6c675e}
+.menugrid{max-width:1000px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dish{padding:22px;border-bottom:1px solid #d7d0c4}.dishtop{display:flex;justify-content:space-between;gap:20px}.dish h3{font:600 21px Georgia,serif}.dish .price{color:#9b6b18;font-weight:bold}.dish p{color:#777;font-size:13px;margin-top:4px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:auto}
+.feature{background:var(--card);border:1px solid var(--line);padding:30px;border-radius:12px}.feature i{font-size:30px;color:var(--gold);font-style:normal}.feature h3{margin:12px 0 8px}.feature p{color:var(--muted);font-size:14px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:190px;gap:12px;max-width:1100px;margin:auto}
+.gallery div{border-radius:10px;background-size:cover;background-position:center}
+.gallery div:first-child{grid-row:span 2;background-image:url("https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1000&q=80")}
+.g2{background-image:url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80")}
+.g3{background-image:url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80")}
+.g4{background-image:url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80")}
+.g5{background-image:url("https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80")}
+.about{background:#151513}.aboutgrid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.aboutimg{height:430px;border-radius:14px;background:url("https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=85") center/cover}.about h2{font:700 44px Georgia,serif;margin:10px 0 18px}.about p{color:var(--muted);margin-bottom:18px}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;color:#ddd;font-size:14px}.checks span::before{content:"✓";color:var(--gold);margin-right:8px}
+.review{max-width:850px;margin:auto;text-align:center}.quote{font:30px Georgia,serif;font-style:italic}.review strong{display:block;color:var(--gold);margin-top:18px}
+.contact{background:#f5f0e7;color:#171614}.contactgrid{max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:35px}.contact h2{font:700 43px Georgia,serif}.contact p{color:#6e695f;margin:12px 0 25px}.info{display:grid;gap:12px}.info div{padding:14px 0;border-bottom:1px solid #ddd4c7}.form{background:white;padding:25px;border-radius:12px}.form input,.form textarea{width:100%;padding:14px;margin-bottom:12px;border:1px solid #ddd;border-radius:7px;font:inherit}.form textarea{height:110px;resize:vertical}.form button{border:0;cursor:pointer;width:100%;padding:14px;border-radius:7px;background:#171614;color:white;font-weight:bold}
+footer{padding:35px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#888;font-size:13px}
+@media(max-width:800px){
+ .navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:120px}.heroimg{min-height:380px}.stats{grid-template-columns:1fr 1fr;gap:20px}.menugrid,.features,.aboutgrid,.contactgrid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.gallery div:first-child{grid-row:span 1;grid-column:span 2}.aboutimg{height:300px}.checks{grid-template-columns:1fr}footer{display:block;text-align:center}footer span{display:block;margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">EMBER <b>&</b> BEAN</a>
+  <div class="navlinks"><a href="#menu">Menu</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div>
+  <a class="navbtn" href="https://wa.me/919999999999">Order Online</a>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">Premium dining • Siliguri</div>
+    <h1>Good food.<br><span>Great stories.</span></h1>
+    <p>A modern neighbourhood restaurant serving comfort food, handcrafted drinks and memorable experiences — designed as a professional business website demo.</p>
+    <a class="btn gold" href="#menu">Explore Menu →</a>
+    <a class="btn outline" href="#contact">Reserve a Table</a>
+  </div>
+  <div class="heroimg"></div>
+</header>
+
+<div class="stats">
+ <div class="stat"><strong>4.9★</strong><span>Customer Rating</span></div>
+ <div class="stat"><strong>8+</strong><span>Years of Service</span></div>
+ <div class="stat"><strong>30+</strong><span>Menu Choices</span></div>
+ <div class="stat"><strong>11 PM</strong><span>Open Until</span></div>
+</div>
+
+<section class="menu" id="menu">
+ <div class="heading"><small>Chef's selection</small><h2>Our Signature Menu</h2><p>Replace these demo items with the customer's real menu, prices and photos.</p></div>
+ <div class="menugrid">
+  <div class="dish"><div class="dishtop"><h3>Smoky Chicken Burger</h3><span class="price">₹249</span></div><p>Grilled chicken, caramelised onions, house sauce and toasted brioche.</p></div>
+  <div class="dish"><div class="dishtop"><h3>Truffle Mushroom Pasta</h3><span class="price">₹299</span></div><p>Creamy sauce, mushrooms, parmesan and herbs.</p></div>
+  <div class="dish"><div class="dishtop"><h3>Four Cheese Pizza</h3><span class="price">₹329</span></div><p>Stone-baked crust with four cheeses and fresh basil.</p></div>
+  <div class="dish"><div class="dishtop"><h3>Classic Cold Coffee</h3><span class="price">₹159</span></div><p>Chilled espresso, milk, ice and a smooth creamy finish.</p></div>
+  <div class="dish"><div class="dishtop"><h3>Loaded Fries</h3><span class="price">₹179</span></div><p>Crispy fries topped with cheese, herbs and house seasoning.</p></div>
+  <div class="dish"><div class="dishtop"><h3>Chocolate Brownie</h3><span class="price">₹149</span></div><p>Warm chocolate brownie served with vanilla ice cream.</p></div>
+ </div>
+</section>
+
+<section>
+ <div class="heading"><small>The experience</small><h2>Why Choose Us?</h2><p>Professional trust-building sections help turn website visitors into customers.</p></div>
+ <div class="features">
+  <div class="feature"><i>✦</i><h3>Fresh Ingredients</h3><p>Quality ingredients selected daily for consistent taste and freshness.</p></div>
+  <div class="feature"><i>♨</i><h3>Made To Order</h3><p>Every dish is prepared with care when you place your order.</p></div>
+  <div class="feature"><i>♡</i><h3>Warm Hospitality</h3><p>A relaxed atmosphere for families, friends, dates and casual meetings.</p></div>
+ </div>
+</section>
+
+<section id="gallery">
+ <div class="heading"><small>Visual story</small><h2>Inside Ember & Bean</h2><p>A photo gallery gives customers a reason to visit before they even arrive.</p></div>
+ <div class="gallery"><div></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div></div>
+</section>
+
+<section class="about" id="about">
+ <div class="aboutgrid">
+  <div class="aboutimg"></div>
+  <div><div class="eyebrow">Our story</div><h2>More than a meal.</h2><p>Ember & Bean is a fictional premium restaurant brand created as a Level 2 website demo. This section can be replaced with the real owner's story, history and values.</p><p>For a paying client, add their own photographs, branding, Google reviews and exact business information here.</p><div class="checks"><span>Fresh ingredients</span><span>Family friendly</span><span>Online ordering</span><span>Easy parking</span></div></div>
+ </div>
+</section>
+
+<section>
+ <div class="review"><div class="eyebrow">Customer love</div><div class="quote">“A beautiful place, excellent food and the kind of atmosphere you want to come back to.”</div><strong>— Demo Customer Review</strong></div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="contactgrid">
+  <div><div class="eyebrow">Let's connect</div><h2>Come say hello.</h2><p>Replace this information with the real business address, phone number, opening hours and social links.</p>
+   <div class="info"><div>📍 Sevoke Road, Siliguri, West Bengal</div><div>📞 +91 99999 99999</div><div>✉ hello@emberbean.example</div><div>🕐 Mon–Sun · 8:00 AM – 11:00 PM</div></div>
+  </div>
+  <form class="form" onsubmit="sendMessage(event)"><input id="name" placeholder="Your name" required><input id="phone" placeholder="Phone number" required><textarea id="msg" placeholder="Your message" required></textarea><button type="submit">Send Enquiry →</button></form>
+ </div>
+</section>
+
+<footer><b>EMBER & BEAN</b><span>Level 2 business website demo • Built for portfolio use</span></footer>
+
+<script>
+function sendMessage(e){
+ e.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ alert(`Thanks ${name}! This demo form works. For a real customer, connect it to WhatsApp, email or a backend.`);
+}
+</script>
+</body>
+</html>
